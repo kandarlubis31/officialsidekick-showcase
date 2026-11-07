@@ -43,34 +43,34 @@ Toko online thrift berbasis **Laravel 12**: katalog publik yang rapi, admin pane
 
 ```mermaid
 flowchart LR
- subgraph FE[" Publik (Blade + Livewire + Tailwind)"]
- K["Katalog / detail / kategori"]
- CO["Checkout /buy/{slug}"]
- end
- subgraph ADM[" Admin Panel"]
- CRUD["CRUD produk + kategori"]
- IG["Instagram scraper"]
- UP["Bulk upload foto"]
- end
- subgraph BE[" Laravel 12"]
- LW["Livewire ProductCatalog"]
- PC["ProductController"]
- IM["Intervention Image → WebP"]
- PP["PaymentController<br/>PayPal REST"]
- AUTH["Jetstream · Fortify · Sanctum"]
- end
- DB[(" DB<br/>users · products · categories<br/>images · sizes")]
- PPAL[" PayPal API"]
- IGAPI[" Instagram"]
- ADM --> IG & UP & CRUD
- IG --> IGAPI
- UP & IG --> IM --> DB
- CRUD --> DB
- FE --> LW & PC & CO
- LW & PC --> DB
- CO --> PP <--> PPAL
- PP -->|"capture sukses → is_sold"| DB
- AUTH --- BE
+    subgraph FE[" Publik (Blade + Livewire + Tailwind)"]
+        K["Katalog / detail / kategori"]
+        CO["Checkout /buy/{slug}"]
+    end
+    subgraph ADM[" Admin Panel"]
+        CRUD["CRUD produk + kategori"]
+        IG["Instagram scraper"]
+        UP["Bulk upload foto"]
+    end
+    subgraph BE[" Laravel 12"]
+        LW["Livewire ProductCatalog"]
+        PC["ProductController"]
+        IM["Intervention Image → WebP"]
+        PP["PaymentController<br/>PayPal REST"]
+        AUTH["Jetstream · Fortify · Sanctum"]
+    end
+    DB[(" DB<br/>users · products · categories<br/>images · sizes")]
+    PPAL[" PayPal API"]
+    IGAPI[" Instagram"]
+    ADM --> IG & UP & CRUD
+    IG --> IGAPI
+    UP & IG --> IM --> DB
+    CRUD --> DB
+    FE --> LW & PC & CO
+    LW & PC --> DB
+    CO --> PP <--> PPAL
+    PP -->|"capture sukses → is_sold"| DB
+    AUTH --- BE
 ```
 
 - **Stack:** Laravel 12 (PHP 8.2+) · Livewire 3 · Tailwind + Vite · Jetstream 5 · Spatie Media Library 11 · Intervention Image v3 · PayPal REST API

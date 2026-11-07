@@ -1,11 +1,11 @@
-# 🛍️ Sidekick Thrift — Toko Online Thrift dengan Scraper Instagram
+# Sidekick Thrift — Toko Online Thrift dengan Scraper Instagram
 
 <div align="center">
 
 **Live di [sidekick.web.id](https://sidekick.web.id) — jual-beli pakaian bekas, dari post Instagram jadi katalog siap beli.**
 
 [![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20)](https://laravel.com)
-[![Live](https://img.shields.io/badge/🟢-sidekick.web.id-brightgreen)](https://sidekick.web.id)
+[![Live](https://img.shields.io/badge/-sidekick.web.id-brightgreen)](https://sidekick.web.id)
 [![PayPal](https://img.shields.io/badge/checkout-PayPal-003087)]()
 [![WebP](https://img.shields.io/badge/gambar-otomatis%20WebP-4A827B)]()
 
@@ -17,51 +17,51 @@
 
 ---
 
-## ❌ Masalahnya
+## Masalahnya
 
 - Thrift seller jualan via **Instagram** — katalog nggak rapi, pembeli harus scroll, DM manual, borong-beres
 - Upload foto produk satu-satu + resize manual itu **capek**
 - Pembayaran online untuk barang second sering tidak ada — CMIIW, transfer manual & titip air mata kalau pembeli hilang
 
-## ✅ Sidekick Thrift
+## Sidekick Thrift
 
 Toko online thrift berbasis **Laravel 12**: katalog publik yang rapi, admin panel yang produktif, dan **checkout PayPal yang otomatis menandai barang terjual**.
 
-### ✨ Fitur
+### Fitur
 
-- 🛒 **Katalog Livewire** — pencarian + filter (kategori, harga, kondisi, size) + sorting + pagination, tanpa reload
-- 📄 **Detail produk** — ukuran (LD/PB/LB/LP + stok), produk terkait satu kategori
-- 📸 **Instagram scraper** ⭐ — tempel link post/reel IG → gambar ter-scrape jadi foto produk (workflow admin paling disayang)
-- 🖼️ **Optimasi gambar otomatis** — upload banyak sekaligus → resize 800px → **WebP kualitas 80%** (hemat bandwidth puluhan persen)
-- 💳 **Checkout PayPal** — direct purchase, order dibuat → capture sukses → produk **otomatis `is_sold`**
-- 🔐 **Auth Jetstream** — register/login, verifikasi email, 2FA
-- 🛠️ **Admin panel** — CRUD produk & kategori, toggle terjual, hapus foto per produk, dashboard statistik
+- **Katalog Livewire** — pencarian + filter (kategori, harga, kondisi, size) + sorting + pagination, tanpa reload
+- **Detail produk** — ukuran (LD/PB/LB/LP + stok), produk terkait satu kategori
+- **Instagram scraper** — tempel link post/reel IG → gambar ter-scrape jadi foto produk (workflow admin paling disayang)
+- **Optimasi gambar otomatis** — upload banyak sekaligus → resize 800px → **WebP kualitas 80%** (hemat bandwidth puluhan persen)
+- **Checkout PayPal** — direct purchase, order dibuat → capture sukses → produk **otomatis `is_sold`**
+- **Auth Jetstream** — register/login, verifikasi email, 2FA
+- **Admin panel** — CRUD produk & kategori, toggle terjual, hapus foto per produk, dashboard statistik
 
 ---
 
-## 🏗️ Arsitektur
+## Arsitektur
 
 ```mermaid
 flowchart LR
-    subgraph FE["🌐 Publik (Blade + Livewire + Tailwind)"]
+    subgraph FE[" Publik (Blade + Livewire + Tailwind)"]
         K["Katalog / detail / kategori"]
         CO["Checkout /buy/{slug}"]
     end
-    subgraph ADM["🛠️ Admin Panel"]
+    subgraph ADM[" Admin Panel"]
         CRUD["CRUD produk + kategori"]
         IG["Instagram scraper"]
         UP["Bulk upload foto"]
     end
-    subgraph BE["⚙️ Laravel 12"]
+    subgraph BE[" Laravel 12"]
         LW["Livewire ProductCatalog"]
         PC["ProductController"]
         IM["Intervention Image → WebP"]
         PP["PaymentController<br/>PayPal REST"]
         AUTH["Jetstream · Fortify · Sanctum"]
     end
-    DB[("🗄️ DB<br/>users · products · categories<br/>images · sizes")]
-    PPAL["💳 PayPal API"]
-    IGAPI["📸 Instagram"]
+    DB[(" DB<br/>users · products · categories<br/>images · sizes")]
+    PPAL[" PayPal API"]
+    IGAPI[" Instagram"]
     ADM --> IG & UP & CRUD
     IG --> IGAPI
     UP & IG --> IM --> DB
@@ -78,12 +78,22 @@ flowchart LR
 
 ---
 
-## 🔒 Tentang Source Code
+## English
+
+**Sidekick Thrift** is an online thrift store where Instagram posts become a ready-to-shop catalog. Sellers no longer need to answer size and price questions one direct message at a time.
+
+The product is live at sidekick.web.id and covers the full flow: scraped listings, stock, orders, and payment.
+
+The source code is not published; this repository documents the product.
+
+---
+
+## Tentang Source Code
 
 Repository ini adalah **showcase** — dokumentasi produk, bukan kode sumber.
 Source code Sidekick Thrift tidak dipublikasikan dan semua hak dilindungi. Lihat [`LICENSE`](LICENSE).
 
-> 💬 Demo, kolaborasi, atau lisensi? Hubungi [Kandar Lubis](https://github.com/kandarlubis31).
+> Demo, kolaborasi, atau lisensi? Hubungi [Kandar Lubis](https://github.com/kandarlubis31).
 
 ---
 
